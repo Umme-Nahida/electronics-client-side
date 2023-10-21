@@ -127,7 +127,9 @@ const Navbar = () => {
                         <div className="flex items-center justify-center">
                             {
                                 user ? <button onClick={handleSignOut} className="btn btn-error">Sign Out</button> :
-                                <Link to='/login'><button className="btn btn-warning">Login</button> </Link>
+                                <Link to='/login'>
+                                    <button className="btn btn-warning">Login</button> 
+                                </Link>
                             }
                         </div>
                     </div>

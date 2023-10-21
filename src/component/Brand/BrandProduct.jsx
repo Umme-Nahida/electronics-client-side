@@ -53,7 +53,7 @@ const BrandProduct = () => {
                                         <button className="btn btn-primary mr-2">Update Product</button>
                                     </Link>
                                     <Link to={`/details/${brandItem?._id}`}>
-                                        <button className="btn ">Details Product</button>
+                                      <button className="btn ">Details Product</button>
                                     </Link>
                                 </div>
                             </div>

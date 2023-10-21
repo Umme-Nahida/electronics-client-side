@@ -41,10 +41,10 @@ const BrandProduct = () => {
                         <div className="card-body items-center ">
                             <p className="text-left">Type: {brandItem?.type}</p>
                             <h2 className="card-title">{brandItem.name}</h2>
-                           
+                            
                            {/* {brandItem.description.length > 200 ? <p>brandItem.description.slice(0,200)</p> } */}
                    
-                            <p>Price: {brandItem?.price}</p>
+                           <p>Price: {brandItem?.price}</p>
                             <p>Rating: {brandItem?.rating}</p>
 
                             <div className="card-actions">

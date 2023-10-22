@@ -4,9 +4,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
-   const {user,logOut} = useContext(AuthContext);
-   console.log(user)
- 
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
+
     const link = <>
         <li className="mb-5" ><Link to="/">Home</Link></li>
         <li className="mb-5"><Link to="/addproduct">Add-Product</Link></li>
@@ -14,25 +14,25 @@ const Navbar = () => {
         <li className="mb-5"><Link to="/register">Register</Link></li>
         {
             user && <>
-                   <li className="mb-5"><Link to="/addproduct">Add-Product</Link></li>
-                   <li className="mb-5"><Link to="/updateproduct">update-Product</Link></li>
+                <li className="mb-5"><Link to="/addproduct">Add-Product</Link></li>
+                <li className="mb-5"><Link to="/updateproduct">update-Product</Link></li>
             </>
         }
 
     </>
 
-    const handleSignOut = e =>{
+    const handleSignOut = e => {
         e.preventDefault();
         logOut()
-        .then(result =>{
-            console.log(result.user)
-        })
-        .then(error => {
-            console.log(error)
-        })
+            .then(result => {
+                console.log(result.user)
+            })
+            .then(error => {
+                console.log(error)
+            })
     }
 
-    const handleBtn = ()=>{
+    const handleBtn = () => {
         console.log('this is handle tbn ')
     }
 
@@ -81,18 +81,18 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             {  // if user is logges so show the this route
-                            user && <>
-                                 <li>
-                                <NavLink
-                                    to="/addproduct"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending border" : isActive ? "text-[#F4A521] py-2 px-6 rounded-full bg-gray-200 text-lg font-semibold" : ""
-                                    }
-                                >
-                                    Add-Product
-                                </NavLink>
-                            </li>
-                                {/* <li>
+                                user && <>
+                                    <li>
+                                        <NavLink
+                                            to="/addproduct"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending border" : isActive ? "text-[#F4A521] py-2 px-6 rounded-full bg-gray-200 text-lg font-semibold" : ""
+                                            }
+                                        >
+                                            Add-Product
+                                        </NavLink>
+                                    </li>
+                                    {/* <li>
                                     <NavLink
                                         to="/update"
                                         className={({ isActive, isPending }) =>
@@ -103,8 +103,8 @@ const Navbar = () => {
                                     </NavLink>
                                 </li> */}
 
-                            </>
-                        }
+                                </>
+                            }
                             <li>
                                 <NavLink
                                     to="/login"
@@ -127,13 +127,25 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="flex navbar-end">
+                    <div className="flex items-center gap-2 navbar-end">
+                       
+                        {
+                            user && <p>{user?.displayName} </p>
+                        }
+                        {
+                          user && 
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user?.photoURL} />
+                                </div>
+                            </label>
+                        }
                         <div className="flex items-center justify-center">
                             {
                                 user ? <button onClick={handleSignOut} className="btn btn-warning">Sign Out</button> :
-                                <Link to='/login'>
-                                    <button className="btn btn-warning">Login</button> 
-                                </Link>
+                                    <Link to='/login'>
+                                        <button className="btn btn-warning">Login</button>
+                                    </Link>
                             }
                         </div>
                     </div>

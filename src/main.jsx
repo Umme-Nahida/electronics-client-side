@@ -16,10 +16,12 @@ import UpdateProduct from './component/UpdateProduct';
 import Home from './component/Home/Home';
 import BrandProduct from './component/Brand/BrandProduct';
 import Details from './component/Details';
+import ErrorPage from './component/ErrorPage/ErrorPage';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

@@ -4,14 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-    
-    const {createUser,gooogleSignIn} = useContext(AuthContext)
-    const [showPassword,setShowPassword] = useState(false)
+
+    const { createUser, gooogleSignIn } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
- 
-    const handleRegister= e =>{
+
+    const handleRegister = e => {
         e.preventDefault();
         // console.log(e.currentTarget)
         const form = new FormData(e.currentTarget)
@@ -19,36 +21,63 @@ const Register = () => {
         const email = form.get('email');
         const photoUrl = form.get('photo-url');
         const password = form.get('password');
-        console.log(name,email,photoUrl,password)
-        if(password.length < 6){
+        console.log(name, email, photoUrl, password)
+        if (password.length < 6) {
             toast("Password should be at least 6 charecters ");
             return;
         }
-        else if(!/[A-Z]/.test(password)){
+        else if (!/[A-Z]/.test(password)) {
             toast('your password have at least one uper case charecters');
             return;
         }
-        else if(!/[a-z]/.test(password)){
+        else if (!/[a-z]/.test(password)) {
             toast('your password have at least one lower case charecters')
             return
         }
 
-        createUser(email,password)
-        .then(result=>{
-            console.log(result.user)
-            toast.success('Successfully created!');
-            e.target.reset();
-            navigate('/');
-        })
-        .catch(error=>{
-            console.log(error)
-            toast.error('This is an error!',error.message,error.code);
-        })
+        else {
+            createUser(email, password)
+              .then((result) => {
+                updateProfile(result.user, {
+                  displayName: name,
+                  photoURL: photoUrl,
+                }).then(() => {
+                 Swal.fire({
+                   icon: "Success!",
+                   title: "Success",
+                   text: "Your register Success!",
+                   footer: '<a href="">Why do I have this issue?</a>',
+                 });
+                });
+                // navigate ater register
+                navigate(location?.state ? location.state : "/");
+              })
+              .catch((error) => {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: " register faild Something went wrong!",
+                })(error);
+              });
+          }
+
+    //     createUser(email,password)
+    //     .then(result=>{
+    //        updateProfile(result.user,{
+    //           displayName: name,
+    //           photoURL: photoUrl,
+    //        })
+    //                     // navigate(location?.state ? location.state : "/");
+    //     })
+    //    .catch(error => {
+    //      console.log(error)
+    //      toast.error('This is an error!', error.message, error.code);
+    //      })
      }
 
-     const handleGoogle =()=>{
+    const handleGoogle = () => {
         gooogleSignIn()
-     }
+    }
 
     return (
         <div className="hero min-h-screen bg-base-200 py-10">
@@ -75,26 +104,26 @@ const Register = () => {
                         <input type="email" placeholder="email" name="email" className="input input-bordered" required />
                     </div>
                     <div className="form-control relative md:flex justify-center">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type={showPassword ? "text" : "password"}
-                            placeholder="password" 
-                            name="password" 
+                        <label className="label">
+                            <span className="label-text">Password</span>
+                        </label>
+                        <input type={showPassword ? "text" : "password"}
+                            placeholder="password"
+                            name="password"
                             className="input input-bordered"
-                            required/>
-                            <span className="absolute top-14 right-4" onClick={()=>setShowPassword(!showPassword)}>
-                                {showPassword ? <FaRegEye></FaRegEye> : <FaRegEyeSlash></FaRegEyeSlash> }</span>
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
+                            required />
+                        <span className="absolute top-14 right-4" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <FaRegEye></FaRegEye> : <FaRegEyeSlash></FaRegEyeSlash>}</span>
+                        <label className="label">
+                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                        </label>
+                    </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Register</button>
                         <button className="btn border my-5" onClick={handleGoogle} >Sign in with Google</button>
                     </div>
                     {/* <button onClick={handleGoogle} className="btn btn-ghost">SignIn with Google</button> */}
-                    <p>You have already account so please <Link to= '/login'><button className="text-blue-700">Login</button></Link></p>
+                    <p>You have already account so please <Link to='/login'><button className="text-blue-700">Login</button></Link></p>
                     <Toaster></Toaster>
                 </form>
             </div>

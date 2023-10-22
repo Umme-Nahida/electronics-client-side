@@ -36,7 +36,7 @@ const Login = () => {
                 'success'
               )
             navigate('/')
-            // navigate(location?.state ? location.state : '/')
+            navigate(location?.state ? location.state : '/')
         })
         .then(error => {
             console.log(error)

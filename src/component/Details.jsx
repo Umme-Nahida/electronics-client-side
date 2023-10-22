@@ -41,14 +41,14 @@ const Details = () => {
     return (
         <div className="mt-10">
 
-            <div className=" pr-32 py-10 columns-direction md:flex md:items-center lg:flex lg:items-center shadow-xl">
+            <div className=" px-8 lg:pr-32 py-10 columns-direction md:flex md:items-center lg:flex lg:items-center shadow-xl">
                  <div className="w-full">
                    <figure><img src={detailsData.photo} alt="Movie" className="image-full" /></figure>
                  </div>
-                 <div className="w-full">
+                 <div className="w-full text-center md:text-left">
                     <p className="mb-5">Type: {detailsData.type}</p>
                     <h2 className="card-title text-xl md:text-2xl lg:text-6xl lg:font-extrabolt mb-5">{detailsData.name}</h2>
-                    <p className="mb-2">Description: {detailsData.description} </p>
+                    <p className="mb-2 w-[400px] md:[600px] mx-auto">Description: {detailsData.description} </p>
                     <p className="mb-2 text-orange-500">Brand: {detailsData.brand} </p>
                     <p className="mb-2 text-orange-500">Rating: {detailsData.rating} </p>
                     <p className="mb-6 text-blue-700 font-extrabold lg:text-3xl">Price: {detailsData.price} </p>

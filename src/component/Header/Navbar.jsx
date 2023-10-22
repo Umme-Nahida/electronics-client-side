@@ -38,7 +38,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="max-w-screen-xl mx-auto px-10 py-4 shadow-xl">
+            <div className="max-w-[1350px] mx-auto px-10 py-4 shadow-xl">
                 <div className=" flex items-center justify-between ">
                     <div className="lg:block navbar-start">
                         <div className="flex justify-start items-center">

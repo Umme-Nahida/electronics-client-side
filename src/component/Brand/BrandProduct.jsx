@@ -8,7 +8,7 @@ const BrandProduct = () => {
     return (
         <div>
 
-            <div className="carousel w-full h-[600px]">
+            <div className="carousel w-full h-[400px] md:h-[600px]">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://i.ibb.co/18QQ3q3/Samsung-Galaxy-S10-5-G-Key-Visual-A3-Landscape-e1557936671753.jpg" className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -32,9 +32,9 @@ const BrandProduct = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-10 justify-center items-center justify-items-center m-40  ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 md:10 m-10 md:m-20 lg:m-20 justify-center items-center justify-items-center   ">
                 {
-                    brandproducts?.map(brandItem => <div key={brandItem._id} className="card w-96 bg-base-100 shadow-xl">
+                    brandproducts?.map(brandItem => <div key={brandItem._id} className="card border-2 w-96 bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
                             <img src={brandItem?.photo} alt="Shoes" className="rounded-xl w-[300px]" />
                         </figure>
@@ -42,7 +42,7 @@ const BrandProduct = () => {
                             <p className="text-left">Type: {brandItem?.type}</p>
                             <h2 className="card-title">{brandItem.name}</h2>
                             
-                           {/* {brandItem.description.length > 200 ? <p>brandItem.description.slice(0,200)</p> } */}
+                           {brandItem.description.length > 120 ? <p className="text-center">{brandItem.description.slice(0,60)}..read </p> : <p>{brandItem.description}</p> }
                    
                            <p>Price: {brandItem?.price}</p>
                             <p>Rating: {brandItem?.rating}</p>

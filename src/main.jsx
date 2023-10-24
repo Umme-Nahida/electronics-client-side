@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:3000/allBrands')
+        loader: () => fetch('https://assignment-ten-server-gamma-seven.vercel.app/allBrands')
       },
       {
         path: '/addproduct',
@@ -35,22 +35,22 @@ const router = createBrowserRouter([
       {
         path: '/brandproducts/:id',
         element: <BrandProduct></BrandProduct>,
-        loader: ({params})=> fetch(`http://localhost:3000/brands/${params?.id}`)
+        loader: ({params})=> fetch(`https://assignment-ten-server-gamma-seven.vercel.app/brands/${params?.id}`)
       },
       {
         path: '/details/:id',
-        element: <Details></Details>,
-        loader: ({params})=> fetch(`http://localhost:3000/details/${params?.id}`)
+        element: <PrivateRout><Details></Details></PrivateRout>,
+        loader: ({params})=> fetch(`https://assignment-ten-server-gamma-seven.vercel.app/details/${params?.id}`)
       },
       {
         path: '/updateproduct/:id',
         element: <PrivateRout><UpdateProduct></UpdateProduct></PrivateRout>,
-        loader:({params})=>fetch(`http://localhost:3000/details/${params.id}`)
+        loader:({params})=>fetch(`https://assignment-ten-server-gamma-seven.vercel.app/details/${params.id}`)
       },
       {
         path: '/mycart/:email',
-        element: <MyCart></MyCart>,
-        loader:async({params})=> await fetch(`http://localhost:3000/getMyCart/${params?.email}`)
+        element: <PrivateRout><MyCart></MyCart></PrivateRout>,
+        loader:async({params})=> await fetch(`https://assignment-ten-server-gamma-seven.vercel.app/getMyCart/${params?.email}`)
       },
       {
         path: '/login',

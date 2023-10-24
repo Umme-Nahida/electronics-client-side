@@ -14,7 +14,7 @@ const BrandCart = ({ brandData }) => {
                         </Link>
                         <div className="card-actions justify-start mt-5">
                         <Link to= {`/brandproducts/${brandData?.brand}`}>
-                          <button className="btn btn-primary">View Product</button>
+                          <button className="btn btn-primary bg-[#5593DD] ">View Product</button>
                         </Link>
                     </div>
                     </div>

@@ -14,7 +14,7 @@ const AddProduct = () => {
         const photo = form.photo.value;
         const newProduct = {name,brand,type,description,rating,price,photo}
         console.log(newProduct)
-        fetch('http://localhost:3000/product',{
+        fetch('https://assignment-ten-server-gamma-seven.vercel.app/product',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -38,7 +38,7 @@ const AddProduct = () => {
 
 
     return (
-        <div className="mx-w-[1110px] mx-auto bg-[#F4F3F0] p-24 ">
+        <div className="mx-w-[1110px] mx-auto bg-[#F4F3F0] p-8 md:p-24 ">
             <h1 className="text-3xl font-extrabold text-center">Add a Product</h1>
             <form onSubmit={handleForm}>
                 {/* form row 1*/}
@@ -63,7 +63,7 @@ const AddProduct = () => {
                    </div>
                  </div> 
                   {/*form row 2  */}
-                <div className="md:flex items-center gap-10 justify-center mb-8">
+                <div className="md:flex items-center justify-center gap-5 md:gap-10 md:mb-8">
                    <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text">Type</span>

@@ -20,7 +20,7 @@ const UpdateProduct = () => {
         const updateProduct = {name,brand,type,rating,price,photo}
         console.log(updateProduct)
 
-        fetch(`http://localhost:3000/update/${_id}`,{
+        fetch(`https://assignment-ten-server-gamma-seven.vercel.app/update/${_id}`,{
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'
@@ -45,7 +45,7 @@ const UpdateProduct = () => {
    
 
     return (
-        <div className="mx-w-[1110px] mx-auto bg-[#F4F3F0] p-24 ">
+        <div className="mx-w-[1110px] mx-auto bg-[#F4F3F0] p-5 md:p-24 ">
             <h1 className="text-3xl font-extrabold text-center">Update a Product</h1>
             <form onSubmit={handleUpdateForm}>
                 {/* form row 1*/}
@@ -70,7 +70,7 @@ const UpdateProduct = () => {
                    </div>
                  </div> 
                   {/*form row 2  */}
-                <div className="md:flex items-center gap-10 justify-center mb-8">
+                <div className="md:flex items-center gap-10 justify-center  md:mb-8">
                    <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text">Type</span>
@@ -80,7 +80,7 @@ const UpdateProduct = () => {
                             
                         </label>
                    </div>
-                   <div className="form-control w-1/2">
+                   <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text">Photo Url</span>
                         </label>
@@ -90,7 +90,7 @@ const UpdateProduct = () => {
                    </div>
                  </div> 
                   {/*form row 3  */}
-                <div className="md:flex items-center gap-10 justify-center mb-8">
+                <div className="md:flex items-center gap-10 justify-center md:mb-8">
                    <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text">Rating</span>
@@ -111,7 +111,7 @@ const UpdateProduct = () => {
                  </div>  
                   {/*form row 4  */}
                 <div className="">
-                   <input type="submit" value="Submit" className="btn btn-block border-l-2 mt-8 bg-slate-300" />
+                   <input type="submit" value="Submit" className="btn btn-block border-l-2 mt-5 md:mt-8 bg-slate-300" />
                  </div>  
             </form>
         </div>

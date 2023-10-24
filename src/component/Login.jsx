@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
     const [showPassword,setShowpassword]  = useState(false)
@@ -19,7 +20,7 @@ const Login = () => {
         .then(result => {
             console.log(result.user)
             const user = {email}
-            fetch('http://localhost:3000/createuser',{
+            fetch('https://assignment-ten-server-gamma-seven.vercel.app/createuser',{
                 method:'POST',
                 headers:{
                     'content-type' : 'application/json'
@@ -38,8 +39,8 @@ const Login = () => {
             navigate('/')
             navigate(location?.state ? location.state : '/')
         })
-        .then(error => {
-            console.log(error)
+        .catch(error => {
+            toast.error(error.message || error.code)
         })
 
          
@@ -77,7 +78,7 @@ const Login = () => {
                         </div>
                        
                        <p>You have no account so please <Link to= '/register'><a className="text-blue-700 mt-10">Register</a></Link></p>
-                    
+                       <Toaster></Toaster>
                     </form>
                 </div>
             

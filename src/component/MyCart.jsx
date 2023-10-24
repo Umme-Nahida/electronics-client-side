@@ -21,7 +21,7 @@ const MyCart = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:3000/storeProduct/${id}`,{
+            fetch(`https://assignment-ten-server-gamma-seven.vercel.app/storeProduct/${id}`,{
                 method:'DELETE'  
               })
               .then(res=>res.json())
@@ -48,9 +48,9 @@ const MyCart = () => {
         <div>
 
             <div id="item1" className="w-full">
-                <img src="https://i.ibb.co/BVLtvct/cf8c5599420499-5f09d760d115b.jpg" className="w-full" />
+                <img src="https://i.ibb.co/BVLtvct/cf8c5599420499-5f09d760d115b.jpg" className="w-full h-[250px] md:h-[400px]" />
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 m-20 justify-items-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 m-10 md:m-20 justify-items-center'>
             {
                 product?.map(product => <div key={product?._id}>
                     {/* show the add to cart product */}
@@ -62,11 +62,11 @@ const MyCart = () => {
                                 {product?.name}
                             </h2>
                             <p className='text-blue-700 font-extrabold text-xl mb-2'>Price: {product.price}</p>
-                            <div className="btn-group btn-group-vertical lg:btn-group-horizontal justify-start">
+                            <div className="btn-group btn-group-vertical lg:btn-group-horizontal justify-start text-center">
                             <Link to={`/updateproduct/${product?._id}`}>
-                                    <button className="btn btn-primary mr-2">Update</button>
+                                    <button className="btn btn-primary mr-4 w-full lg:block py-2 px-5">Update</button>
                                 </Link>
-                                    <button onClick={()=>handleDelete(product._id)} className="btn btn-warning">Delete</button>
+                                    <button onClick={()=>handleDelete(product._id)} className="btn btn-warning w-full lg:ml-2 md:mt-2 mt-2 lg:mt-0 lg:w-auto lg:block py-2 px-5">Delete</button>
                             </div>
                         </div>
                     </div>

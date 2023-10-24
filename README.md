@@ -1,4 +1,4 @@
-CLIENT-SIDE-LiVE-LINK: https://assignment-ten-ab1c4.web.app
+CLIENT-SIDE-LiVE-LINK: https://electronics-b2f0a.web.app
 SERVER-SIDE-LINK: https://assignment-ten-server-gamma-seven.vercel.app/
 
 

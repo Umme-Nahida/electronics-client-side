@@ -50,7 +50,9 @@ const MyCart = () => {
             <div id="item1" className="w-full">
                 <img src="https://i.ibb.co/BVLtvct/cf8c5599420499-5f09d760d115b.jpg" className="w-full h-[250px] md:h-[400px]" />
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 m-10 md:m-20 justify-items-center'>
+            {
+                product.length > 0 ?
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 m-10 md:m-20 justify-items-center'>
             {
                 product?.map(product => <div key={product?._id}>
                     {/* show the add to cart product */}
@@ -74,8 +76,12 @@ const MyCart = () => {
                 </div>
 
                 )
+            } 
+            </div> :
+              <div className='text-center p-40'>
+                  <h1 className='text-3xl' >Nothing purchase by you</h1>
+              </div>
             }
-            </div>
         </div>
     );
 }
